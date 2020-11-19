@@ -69,7 +69,7 @@
   margin-top: 10px;
 }
 
-input[type="submit"] {
+input[type='submit'] {
   padding: 5px;
   background-color: transparent;
   color: black;
@@ -79,12 +79,12 @@ input[type="submit"] {
   cursor: pointer;
 }
 
-input[type="submit"]:hover {
+input[type='submit']:hover {
   background-color: #282c34;
   color: antiquewhite;
 }
 
-.search > input[type="text"] {
+.search > input[type='text'] {
   width: 40%;
   min-width: 170px;
 }

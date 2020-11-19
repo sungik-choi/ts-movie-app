@@ -1,9 +1,13 @@
-import React from "react";
+import React from 'react';
 
-const Header = (props) => {
+interface IHeaderProps {
+  text: string;
+}
+
+const Header = ({ text }: IHeaderProps): JSX.Element => {
   return (
     <header className="App-header">
-      <h2>{props.text}</h2>
+      <h2>{text}</h2>
     </header>
   );
 };
