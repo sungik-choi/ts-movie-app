@@ -12,4 +12,4 @@ const Header = ({ text }: IHeaderProps): JSX.Element => {
   );
 };
 
-export default Header;
+export default React.memo(Header);

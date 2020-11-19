@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import './App.css';
 import Header from './components/Header';
 import Movie from './components/Movie';
 import Search from './components/Search';
 import { IMovie } from './types';
-
 import useFetch from './hooks/useFetch';
 
 const MOVIE_API_URL = 'https://www.omdbapi.com/?s=man&apikey=4a3b711b';
@@ -12,7 +11,11 @@ const MOVIE_API_URL = 'https://www.omdbapi.com/?s=man&apikey=4a3b711b';
 const App = (): JSX.Element => {
   const { setUrl, movies, loading, errorMessage } = useFetch(MOVIE_API_URL);
 
-  const search = (searchValue: string) => setUrl(`https://www.omdbapi.com/?s=${searchValue}&apikey=4a3b711b`);
+  const search = useCallback(
+    (searchValue: string) =>
+      setUrl(`https://www.omdbapi.com/?s=${searchValue}&apikey=4a3b711b`),
+    [setUrl],
+  );
 
   return (
     <div className="App">
