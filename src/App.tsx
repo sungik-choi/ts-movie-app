@@ -5,15 +5,13 @@ import Movie from './components/Movie';
 import Search from './components/Search';
 import { IMovie } from './types';
 import useFetch from './hooks/useFetch';
-
-const MOVIE_API_URL = 'https://www.omdbapi.com/?s=man&apikey=4a3b711b';
+import { defaultUrl, generateSearchUrl } from './urls';
 
 const App = (): JSX.Element => {
-  const { setUrl, movies, loading, errorMessage } = useFetch(MOVIE_API_URL);
+  const { setUrl, movies, loading, errorMessage } = useFetch(defaultUrl);
 
   const search = useCallback(
-    (searchValue: string) =>
-      setUrl(`https://www.omdbapi.com/?s=${searchValue}&apikey=4a3b711b`),
+    (searchValue: string) => setUrl(generateSearchUrl(searchValue)),
     [setUrl],
   );
 
