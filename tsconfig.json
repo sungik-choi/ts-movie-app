@@ -20,6 +20,9 @@
     "noEmit": true,
     "jsx": "react",
     "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true
   },
   "include": [
     "src"
