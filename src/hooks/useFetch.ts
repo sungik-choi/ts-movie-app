@@ -2,13 +2,13 @@ import { useState, useEffect } from 'react';
 
 interface IState<T> {
   setRequest: React.Dispatch<React.SetStateAction<RequestInfo>>;
-  data: T[];
+  data: T | null;
   loading: boolean;
   errorMessage: string | null;
 }
 
 const useFetch = <T>(url: RequestInfo): IState<T> => {
-  const [data, setData] = useState<T[]>([]);
+  const [data, setData] = useState<T | null>(null);
   const [request, setRequest] = useState(url);
   const [loading, setLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);

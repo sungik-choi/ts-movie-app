@@ -8,7 +8,7 @@ import useFetch from './hooks/useFetch';
 import { defaultUrl, generateSearchUrl } from './urls';
 
 const App = (): JSX.Element => {
-  const { setRequest, data, loading, errorMessage } = useFetch<IMovie>(
+  const { setRequest, data, loading, errorMessage } = useFetch<IMovie[]>(
     defaultUrl,
   );
 
@@ -28,7 +28,7 @@ const App = (): JSX.Element => {
         ) : errorMessage ? (
           <div className="errorMessage">{errorMessage}</div>
         ) : (
-          data.map((movie: IMovie, index: number) => (
+          data?.map((movie: IMovie, index: number) => (
             <Movie key={`${index}-${movie.Title}`} movie={movie} />
           ))
         )}
