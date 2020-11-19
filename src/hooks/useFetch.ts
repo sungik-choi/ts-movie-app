@@ -2,15 +2,15 @@ import { useState, useEffect } from 'react';
 
 interface IState<T> {
   setRequest: React.Dispatch<React.SetStateAction<RequestInfo>>;
-  data: T | null;
+  response: T | null;
   loading: boolean;
   errorMessage: string | null;
 }
 
 const useFetch = <T>(url: RequestInfo): IState<T> => {
-  const [data, setData] = useState<T | null>(null);
   const [request, setRequest] = useState(url);
   const [loading, setLoading] = useState(true);
+  const [response, setResponse] = useState<T | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   useEffect(() => {
@@ -20,11 +20,11 @@ const useFetch = <T>(url: RequestInfo): IState<T> => {
     };
 
     const fetchData = async (): Promise<void> => {
-      const response = await fetch(request);
-      const json = await response.json();
+      const res = await fetch(request);
+      const json = await res.json();
       const { Response, Search, Error } = json;
 
-      Response === 'True' ? setData(Search) : setErrorMessage(Error);
+      Response === 'True' ? setResponse(Search) : setErrorMessage(Error);
       setLoading(false);
     };
 
@@ -32,7 +32,7 @@ const useFetch = <T>(url: RequestInfo): IState<T> => {
     fetchData();
   }, [request]);
 
-  return { setRequest, data, loading, errorMessage };
+  return { setRequest, response, loading, errorMessage };
 };
 
 export default useFetch;
