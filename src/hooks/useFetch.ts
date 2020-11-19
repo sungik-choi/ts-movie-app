@@ -32,8 +32,6 @@ const useFetch = (URL: string): IUseFetch => {
       const json: IResponse = await response.json();
       const { Response, Search = [], Error = null } = json;
 
-      console.log(response);
-      console.log(json);
       Response === 'True' ? setMovies(Search) : setErrorMessage(Error);
       setLoading(false);
     };
