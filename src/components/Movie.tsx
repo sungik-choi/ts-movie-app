@@ -7,7 +7,9 @@ interface IMovieProps {
 
 const Movie = ({ movie }: IMovieProps): JSX.Element => {
   const poster =
-    movie.Poster === 'N/A' ? process.env.DEFAULT_PLACEHOLDER_IMG : movie.Poster;
+    movie.Poster === 'N/A'
+      ? process.env.REACT_APP_PLACEHOLDER_IMG
+      : movie.Poster;
 
   return (
     <div className="movie">
