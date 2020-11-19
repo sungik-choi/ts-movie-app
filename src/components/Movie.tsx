@@ -1,5 +1,5 @@
 import React from 'react';
-import { IMovie } from '../types';
+import { IMovie } from '../types/movie';
 
 interface IMovieProps {
   movie: IMovie;

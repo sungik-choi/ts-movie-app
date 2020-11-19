@@ -3,9 +3,9 @@ import './App.css';
 import Header from './components/Header';
 import Movie from './components/Movie';
 import Search from './components/Search';
-import { IMovie } from './types';
+import { IMovie } from './types/movie';
 import useFetch from './hooks/useFetch';
-import { defaultUrl, generateSearchUrl } from './urls';
+import { defaultUrl, generateSearchUrl } from './api/urls';
 
 const App = (): JSX.Element => {
   const { setRequest, response, loading, errorMessage } = useFetch<IMovie[]>(
