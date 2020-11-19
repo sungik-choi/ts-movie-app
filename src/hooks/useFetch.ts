@@ -8,6 +8,13 @@ interface IUseFetch {
   errorMessage: string | null;
 }
 
+interface IResponse {
+  Response: string;
+  Search?: IMovie[];
+  Error?: string | null;
+  totalResults?: number;
+}
+
 const useFetch = (URL: string): IUseFetch => {
   const [url, setUrl] = useState(URL);
   const [movies, setMovies] = useState<IMovie[]>([]);
@@ -18,20 +25,21 @@ const useFetch = (URL: string): IUseFetch => {
     const initState = () => {
       setLoading(true);
       setErrorMessage(null);
-    }
+    };
 
-    const fetchData = async () => {
+    const fetchMovies = async (): Promise<void> => {
       const response = await fetch(url);
-      const json = await response.json();
+      const json: IResponse = await response.json();
+      const { Response, Search = [], Error = null } = json;
+
       console.log(response);
       console.log(json);
-
-      json.Response === 'True' ? setMovies(json.Search) : setErrorMessage(json.Error);
+      Response === 'True' ? setMovies(Search) : setErrorMessage(Error);
       setLoading(false);
     };
 
     initState();
-    fetchData();
+    fetchMovies();
   }, [url]);
 
   return { setUrl, movies, loading, errorMessage };
