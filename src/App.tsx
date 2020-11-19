@@ -8,11 +8,13 @@ import useFetch from './hooks/useFetch';
 import { defaultUrl, generateSearchUrl } from './urls';
 
 const App = (): JSX.Element => {
-  const { setUrl, movies, loading, errorMessage } = useFetch(defaultUrl);
+  const { setRequest, data, loading, errorMessage } = useFetch<IMovie>(
+    defaultUrl,
+  );
 
   const search = useCallback(
-    (searchValue: string) => setUrl(generateSearchUrl(searchValue)),
-    [setUrl],
+    (searchValue: string) => setRequest(generateSearchUrl(searchValue)),
+    [setRequest],
   );
 
   return (
@@ -26,7 +28,7 @@ const App = (): JSX.Element => {
         ) : errorMessage ? (
           <div className="errorMessage">{errorMessage}</div>
         ) : (
-          movies.map((movie: IMovie, index: number) => (
+          data.map((movie: IMovie, index: number) => (
             <Movie key={`${index}-${movie.Title}`} movie={movie} />
           ))
         )}

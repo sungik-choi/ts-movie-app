@@ -1,23 +1,15 @@
 import { useState, useEffect } from 'react';
-import { IMovie } from '../types';
 
-interface IUseFetch {
-  setUrl: React.Dispatch<React.SetStateAction<string>>;
-  movies: IMovie[];
+interface IState<T> {
+  setRequest: React.Dispatch<React.SetStateAction<string>>;
+  data: T[];
   loading: boolean;
   errorMessage: string | null;
 }
 
-interface IResponse {
-  Response: string;
-  Search?: IMovie[];
-  Error?: string | null;
-  totalResults?: number;
-}
-
-const useFetch = (URL: string): IUseFetch => {
-  const [url, setUrl] = useState(URL);
-  const [movies, setMovies] = useState<IMovie[]>([]);
+const useFetch = <T>(url: string): IState<T> => {
+  const [data, setData] = useState<T[]>([]);
+  const [request, setRequest] = useState(url);
   const [loading, setLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
@@ -27,20 +19,20 @@ const useFetch = (URL: string): IUseFetch => {
       setErrorMessage(null);
     };
 
-    const fetchMovies = async (): Promise<void> => {
-      const response = await fetch(url);
-      const json: IResponse = await response.json();
-      const { Response, Search = [], Error = null } = json;
+    const fetchData = async (): Promise<void> => {
+      const response = await fetch(request);
+      const json = await response.json();
+      const { Response, Search, Error } = json;
 
-      Response === 'True' ? setMovies(Search) : setErrorMessage(Error);
+      Response === 'True' ? setData(Search) : setErrorMessage(Error);
       setLoading(false);
     };
 
     initState();
-    fetchMovies();
-  }, [url]);
+    fetchData();
+  }, [request]);
 
-  return { setUrl, movies, loading, errorMessage };
+  return { setRequest, data, loading, errorMessage };
 };
 
 export default useFetch;
