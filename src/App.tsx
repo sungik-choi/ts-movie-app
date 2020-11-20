@@ -1,10 +1,10 @@
 import React, { useCallback } from 'react';
 import './App.css';
-import Header from './components/Header';
-import Movie from './components/Movie';
-import Search from './components/Search';
-import { IMovie } from './types/movie';
+import Header from './components/header/Header';
+import Movie from './components/movie/Movie';
+import Search from './components/search/Search';
 import useFetch from './hooks/useFetch';
+import { IMovie } from './types/movie';
 import { defaultUrl, generateSearchUrl } from './api/urls';
 
 const App = (): JSX.Element => {

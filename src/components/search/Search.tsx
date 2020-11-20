@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './Search.css';
 
 interface ISearchProps {
   search: (url: string) => void;
@@ -10,10 +11,12 @@ const Search = ({ search }: ISearchProps): JSX.Element => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setValue(e.target.value);
 
+  const clearInputValue = () => setValue('');
+
   const callSearchFunction = (e: React.MouseEvent<HTMLInputElement>) => {
     e.preventDefault();
     search(value);
-    setValue('');
+    clearInputValue();
   };
 
   return (

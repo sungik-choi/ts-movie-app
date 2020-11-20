@@ -1,3 +1,22 @@
+:root {
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-dark-gray: #282c34;
+  --color-red: rgb(161, 15, 15);
+
+  --sizing-xs: 5px;
+  --sizing-sm: 10px;
+  --sizing-md: 20px;
+  --sizing-lg: 25px;
+
+  --grid-column: 4;
+
+  --header-height: 70px;
+  --submit-button-width: 80px;
+  --search-input-width: 40%;
+  --search-input-min-width: 170px;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

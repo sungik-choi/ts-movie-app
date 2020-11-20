@@ -1,5 +1,6 @@
 import React from 'react';
-import { IMovie } from '../types/movie';
+import './Movie.css';
+import { IMovie } from '../../types/movie';
 
 interface IMovieProps {
   movie: IMovie;
