@@ -10,6 +10,7 @@
   --sizing-lg: 25px;
 
   --grid-column: 4;
+  --grid-max-width: 1200px;
 
   --header-height: 70px;
   --submit-button-width: 80px;
