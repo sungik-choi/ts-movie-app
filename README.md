@@ -90,7 +90,7 @@ const useFetch = <T>(url: RequestInfo): IState<T> => {
 
 **2. git 설치**
 
-> 참고 링크: <https://git-scm.com/book/ko/v2/%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-Git-%EC%84%A4%EC%B9%98>
+> 참고 링크: [git 공식 사이트](<https://git-scm.com/book/ko/v2/%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-Git-%EC%84%A4%EC%B9%98>)
 
 **간단 설명**
 
