@@ -8,9 +8,9 @@ import { IMovie } from './types/movie';
 import { defaultUrl, generateSearchUrl } from './api/urls';
 
 const App = (): JSX.Element => {
-  const { setRequest, response, loading, errorMessage } = useFetch<IMovie[]>(
-    defaultUrl,
-  );
+  const { setRequest, response: movies, loading, errorMessage } = useFetch<
+    IMovie[]
+  >(defaultUrl);
 
   const search = useCallback(
     (searchValue: string) => setRequest(generateSearchUrl(searchValue)),
@@ -28,7 +28,7 @@ const App = (): JSX.Element => {
         ) : errorMessage ? (
           <div className="errorMessage">{errorMessage}</div>
         ) : (
-          response?.map((movie: IMovie, index: number) => (
+          movies?.map((movie: IMovie, index: number) => (
             <Movie key={`${index}-${movie.Title}`} movie={movie} />
           ))
         )}
