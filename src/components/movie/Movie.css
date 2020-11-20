@@ -1,0 +1,4 @@
+.movie {
+  padding: var(--sizing-xs) var(--sizing-lg) var(--sizing-sm) var(--sizing-lg);
+  max-width: calc(var(--grid-column) / 100%);
+}

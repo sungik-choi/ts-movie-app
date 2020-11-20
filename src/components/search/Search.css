@@ -1,0 +1,27 @@
+.search {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: var(--sizing-sm);
+}
+
+input[type='submit'] {
+  padding: var(--sizing-xs);
+  background-color: transparent;
+  color: var(--color-black);
+  border: 1px solid var(--color-black);
+  width: var(--submit-button-width);
+  margin-left: var(--sizing-xs);
+  cursor: pointer;
+}
+
+input[type='submit']:hover {
+  background-color: var(--color-dark-gray);
+  color: var(--color-white);
+}
+
+.search > input[type='text'] {
+  width: var(--search-input-width);
+  min-width: var(--search-input-min-width);
+}
